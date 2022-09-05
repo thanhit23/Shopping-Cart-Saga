@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.account-navbar::before {
+  content: ' ';
+  position: absolute;
+  bottom: calc(100%);
+  right: 9px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 12px solid white;
+}

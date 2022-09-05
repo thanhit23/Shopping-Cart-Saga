@@ -6,23 +6,35 @@ const prettierOptions = JSON.parse(
 );
 
 module.exports = {
+  extends: ['react-app', 'airbnb'],
+  plugins: ['react', 'prettier'],
   env: {
     browser: true,
     es2021: true,
     es6: true,
   },
-  extends: ['react-app', 'prettier', 'airbnb'],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
   },
-  plugins: ['react', 'prettier'],
   rules: {
     'prettier/prettier': [2, prettierOptions],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-one-expression-per-line': [0, { allow: 'literal' }],
+    'import/imports-first': 0,
+    'import/newline-after-import': 0,
+    'import/no-dynamic-require': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/no-named-as-default': 0,
+    'import/no-unresolved': 2,
+    'import/no-webpack-loader-syntax': 0,
+    'import/prefer-default-export': 0,
+    'react/jsx-props-no-spreading': 0,
+    'arrow-parens': [2, "as-needed"],
+    'react/forbid-prop-types': 0,
+    'react/require-default-props': 0,
+    'react/destructuring-assignment': 0
   },
 };

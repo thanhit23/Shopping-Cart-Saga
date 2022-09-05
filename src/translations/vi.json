@@ -1,0 +1,11 @@
+{
+	"container.Header.home": "Trang Chủ",
+	"container.Header.account": "Tài Khoản",
+	"container.Header.account.information": "Thông Tin",
+	"container.Header.account.logout": "Đăng Xuất",
+	"container.Header.navigation.search": "Tìm Kiếm",
+	"container.Header.dropdown.product.title": "Sản Phẩm",
+	"container.Header.dropdown.product.item.all": "Tất Cả Sản Phẩm",
+	"container.Header.dropdown.product.item.detail": "Sản Phẩm Chi Tiết",
+	"app.learn-react-link": "Học React."
+}

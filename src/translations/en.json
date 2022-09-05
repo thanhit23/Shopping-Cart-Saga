@@ -1,0 +1,11 @@
+{
+	"container.Header.home": "Home",
+	"container.Header.account": "Account",
+	"container.Header.account.information": "Information",
+	"container.Header.account.logout": "Log Out",
+	"container.Header.navigation.search": "Search",
+	"container.Header.dropdown.product.title": "Product Page",
+	"container.Header.dropdown.product.item.all": "All Product",
+	"container.Header.dropdown.product.item.detail": "Product Detail",
+	"app.learn-react-link": "Learn React."
+}
