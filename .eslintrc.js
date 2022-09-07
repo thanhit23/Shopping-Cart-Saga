@@ -21,6 +21,10 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': [2, prettierOptions],
+    'arrow-parens': [2, "as-needed"],
+    'arrow-body-style': 0,
+    "react/prop-types": 0,
+    'operator-linebreak': ["error", "after"],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-one-expression-per-line': [0, { allow: 'literal' }],
     'import/imports-first': 0,
@@ -32,7 +36,6 @@ module.exports = {
     'import/no-webpack-loader-syntax': 0,
     'import/prefer-default-export': 0,
     'react/jsx-props-no-spreading': 0,
-    'arrow-parens': [2, "as-needed"],
     'react/forbid-prop-types': 0,
     'react/require-default-props': 0,
     'react/destructuring-assignment': 0

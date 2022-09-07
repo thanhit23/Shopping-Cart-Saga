@@ -9,15 +9,18 @@
 
 import produce from 'immer';
 
-const initialState = {
-  loading: false,
+import * as types from './constants';
+
+export const initialState = {
+  isToggleMenu: false,
 };
 
 const appReducer = (state = initialState, action) =>
   produce(state, data => {
     switch (action.type) {
-      case 'a':
-        console.log(data);
+      case types.OPEN_MENU:
+        // data.isToggleMenu = true;
+        console.log(data, 'data');
         break;
     }
   })
