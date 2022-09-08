@@ -7,12 +7,13 @@ import Wrapper from './Wrapper';
 function ListItem(props) {
   return (
     <Wrapper>
-      <Item>{props.item}</Item>
+      <Item className={props.class}>{props.item}</Item>
     </Wrapper>
   );
 }
 
 ListItem.propTypes = {
+  class: PropTypes.any,
   item: PropTypes.any,
 };
 

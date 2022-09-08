@@ -2,28 +2,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FormattedMessage } from 'react-intl';
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
 import messages from './messages';
 
-const HomeWrapper = styled.div`
-  display: flex;
-`;
-
 class Home extends Component {
-  onOpenMenu = () => this.props.openMenu;
+  onOpenMenu = () => this.props.openMenu();
 
   render() {
     return (
-      <HomeWrapper
+      <div
         className="flex items-center text-white cursor-pointer"
         onClick={this.onOpenMenu}
+        onKeyDown={this.onOpenMenu}
+        tabIndex={0}
+        role="button"
       >
         <FontAwesomeIcon icon={faBars} />
         <p className="ml-3">
           <FormattedMessage {...messages.home} />
         </p>
-      </HomeWrapper>
+      </div>
     );
   }
 }

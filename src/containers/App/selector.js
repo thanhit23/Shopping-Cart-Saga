@@ -5,12 +5,17 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-const selectGlobal = state => state.global || initialState;
+const selectGlobal = state => initialState || state.global;
+
+console.log(selectGlobal, 'selectGlobalselectGlobal');
 
 const makeSelectIsToggleMenu = () =>
   createSelector(
     selectGlobal,
-    globalState => globalState.isToggleMenu,
+    globalState => {
+      console.log(globalState, 'globalState');
+      globalState.isToggleMenu();
+    },
   );
 
 export {

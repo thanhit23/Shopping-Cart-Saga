@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .header {
+        @apply bg-[rgba(0,0,0,0.3)];
+    }
+    .header-wrapper {
+        @apply flex py-4 px-12 justify-between;
+    }
+    .account-wrapper {
+        @apply flex items-center text-[#fff] cursor-pointer relative;
+    }
+    .account-wrapper:hover .account-navbar {
+        @apply block;
+    }
+    .account-navbar {
+        @apply absolute top-[theme(top.100+10)] right-0;
+        @apply bg-white text-[#000] shadow-lg drop-shadow-xl;
+        @apply hidden w-32 rounded;
+    }
+    .account-navbar::before {
+        @apply absolute bottom-full right-[10%];
+        content: ' ';
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 12px solid #fff;
+    }
+    .account-navbar li {
+        @apply text-[#000];
+    }
+
+    #Cart {
+        @apply w-[1200px] m-auto;
+    }
+
+    .information-item {
+        @apply py-[8px] px-[68px];
+    }
+    .table-thead {
+        @apply border-[#111] border-solid;
+        border-bottom-width: 1px;
+    }
+    .product-item {
+        @apply p-[10px];
+    }
+    .btn-delete {
+        @apply text-center py-[5px] rounded-lg px-[10px] text-white;
+        background-color: rgb(220 38 38) !important;
+    }
+    .btn-add-cart {
+        @apply text-center py-[5px] rounded-lg px-[10px] text-white;
+        background-color: #007bff !important;
+    }
+}
+
