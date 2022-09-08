@@ -8,6 +8,7 @@ const Wrapper = styled.li`
   position: relative;
   border-top: 1px solid #eee;
   justify-content: center;
+  color: #fff;
 
   &:first-child {
     border-top: none;

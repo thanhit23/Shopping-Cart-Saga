@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 
-import './index.css';
+import './css/index.css';
 import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 import viMessages from './translations/vi.json';
@@ -16,10 +16,10 @@ const messages = {
 };
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const initialState = {};
-const stores = configureStore(initialState);
+const store = configureStore(initialState);
 
 root.render(
-  <Provider store={stores}>
+  <Provider store={store}>
     <IntlProvider locale="en" defaultLocale="en" messages={messages.en}>
       <App />
     </IntlProvider>

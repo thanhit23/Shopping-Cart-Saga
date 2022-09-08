@@ -12,10 +12,7 @@ console.log(selectGlobal, 'selectGlobalselectGlobal');
 const makeSelectIsToggleMenu = () =>
   createSelector(
     selectGlobal,
-    globalState => {
-      console.log(globalState, 'globalState');
-      globalState.isToggleMenu();
-    },
+    globalState => globalState.isToggleMenu(),
   );
 
 export {

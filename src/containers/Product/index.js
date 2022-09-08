@@ -1,6 +1,11 @@
-import styled from 'styled-components';
+import React, { Component } from 'react';
 
-export default styled.div`
-  height: 500px;
-  background-color: #282c34;
-`;
+import ProductComponent from '../../components/Product';
+
+class Product extends Component {
+  render() {
+    return <ProductComponent />;
+  }
+}
+
+export default Product;

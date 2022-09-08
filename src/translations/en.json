@@ -7,5 +7,14 @@
 	"container.Header.dropdown.product.title": "Product Page",
 	"container.Header.dropdown.product.item.all": "All Product",
 	"container.Header.dropdown.product.item.detail": "Product Detail",
+	"container.Product.title": "List Product",
+	"container.Product.name.product.item": "MacOS",
+	"container.Product.price.product.item": "700$",
+	"container.Cart.bar.information.product.img": "Image",
+	"container.Cart.bar.information.product.name": "Product's Name",
+	"container.Cart.bar.information.product.price": "Price",
+	"container.Cart.bar.information.product.quantity": "Quantity",
+	"container.Cart.bar.information.product.total": "Total",
+	"container.Cart.bar.information.product.feature": "Feature",
 	"app.learn-react-link": "Learn React."
 }

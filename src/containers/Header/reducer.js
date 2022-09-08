@@ -15,18 +15,20 @@ export const initialState = {
   isToggleMenu: false,
 };
 
-const appReducer = (state = initialState, action) =>
-  produce(state, draft => {
+const appReducer = (state = initialState, action) => {
+  console.log(action, 'action');
+  return produce(state, draft => {
     switch (action.type) {
       case OPEN_MENU:
-        draft.isToggleMenu = true;
+        // draft.isToggleMenu = true;
         break;
       case CLOSE_MENU:
+        console.log('thanh');
         draft.isToggleMenu = false;
         break;
       default:
         break;
     }
   });
-
+};
 export default appReducer;

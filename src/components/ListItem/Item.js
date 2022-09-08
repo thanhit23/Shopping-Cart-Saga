@@ -5,6 +5,7 @@ const Item = styled.div`
   justify-content: space-between;
   height: 100%;
   align-items: center;
+  cursor: pointer;
 `;
 
 export default Item;
