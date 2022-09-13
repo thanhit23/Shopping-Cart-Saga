@@ -7,10 +7,9 @@
  */
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Header from '../Header';
 import Product from '../Product';
@@ -37,11 +36,14 @@ class App extends Component {
           />
         </Helmet>
         <Header />
+<<<<<<< HEAD
+=======
         <BrowserRouter>
           <Routes>
             <Route exact path="/product" component={Product} />
           </Routes>
         </BrowserRouter>
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf
         <Product />
         <Cart />
       </AppWrapper>
@@ -49,6 +51,9 @@ class App extends Component {
   }
 }
 
+<<<<<<< HEAD
+export default App;
+=======
 const mapStateToProps = state => {
   const {
     global: { isToggleMenu },
@@ -62,3 +67,4 @@ const mapStateToProps = state => {
 const AppComponent = connect(mapStateToProps, null)(App);
 
 export default AppComponent;
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf

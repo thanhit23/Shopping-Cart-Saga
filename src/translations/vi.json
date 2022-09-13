@@ -8,5 +8,17 @@
 	"container.Header.dropdown.product.item.all": "Tất Cả Sản Phẩm",
 	"container.Header.dropdown.product.item.detail": "Sản Phẩm Chi Tiết",
 	"container.Product.title": "Danh Sách Sản Phẩm",
+<<<<<<< HEAD
+	"container.Product.name.product.item": "MacOS",
+	"container.Product.price.product.item": "700đ",
+	"container.Product.button_add_cart.product.item": "Thêm giả hàng",
+	"container.Cart.bar.information.product.img": "Hình Ảnh",
+	"container.Cart.bar.information.product.name": "Tên sản phẩm",
+	"container.Cart.bar.information.product.price": "Giá",
+	"container.Cart.bar.information.product.quantity": "Số lượng",
+	"container.Cart.bar.information.product.total": "Tổng Tiền",
+	"container.Cart.bar.information.product.feature": "TÍnh Năng",
+=======
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf
 	"app.learn-react-link": "Học React."
 }
