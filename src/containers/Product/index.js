@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { FormattedMessage } from 'react-intl';
@@ -56,3 +57,15 @@ const withConnect = connect(mapStateToProps, null);
 const withReducer = injectReducer({ key: 'products', reducer });
 
 export default compose(withReducer, withConnect)(Product);
+=======
+
+import ProductComponent from '../../components/Product';
+
+class Product extends Component {
+  render() {
+    return <ProductComponent />;
+  }
+}
+
+export default Product;
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf

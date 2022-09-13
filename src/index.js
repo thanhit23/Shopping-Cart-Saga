@@ -15,6 +15,11 @@ const messages = {
   vi: viMessages,
 };
 const root = ReactDOM.createRoot(document.getElementById('root'));
+<<<<<<< HEAD
+=======
+const initialState = {};
+const store = configureStore(initialState);
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf
 
 root.render(
   <Provider store={store}>

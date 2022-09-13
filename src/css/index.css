@@ -36,6 +36,7 @@
         @apply w-[1200px] m-auto;
     }
 
+<<<<<<< HEAD
     .information-item {
         @apply py-[8px] px-[68px];
     }
@@ -54,5 +55,13 @@
         @apply text-center py-[5px] rounded-lg px-[10px] text-white;
         background-color: #007bff !important;
     }
+=======
+    .information-product-wrapper {
+        @apply flex justify-around;
+    }
+    .information-item {
+        @apply py-[8px] px-[68px];
+    }
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf
 }
 

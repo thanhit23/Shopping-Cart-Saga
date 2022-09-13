@@ -36,6 +36,14 @@ class App extends Component {
           />
         </Helmet>
         <Header />
+<<<<<<< HEAD
+=======
+        <BrowserRouter>
+          <Routes>
+            <Route exact path="/product" component={Product} />
+          </Routes>
+        </BrowserRouter>
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf
         <Product />
         <Cart />
       </AppWrapper>
@@ -43,4 +51,20 @@ class App extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default App;
+=======
+const mapStateToProps = state => {
+  const {
+    global: { isToggleMenu },
+  } = state;
+
+  return {
+    isToggleMenu,
+  };
+};
+
+const AppComponent = connect(mapStateToProps, null)(App);
+
+export default AppComponent;
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf

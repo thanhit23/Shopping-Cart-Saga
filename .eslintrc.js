@@ -33,6 +33,8 @@ module.exports = {
     'operator-linebreak': ['error', 'after'],
     'react-hooks/rules-of-hooks': 0,
     'react-hooks/exhaustive-deps': 0,
+    'react/prop-types': 0,
+    'operator-linebreak': ["error", "after"],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-one-expression-per-line': [0, { allow: 'literal' }],
     'import/imports-first': 0,

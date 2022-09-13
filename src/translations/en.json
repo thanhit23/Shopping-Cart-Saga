@@ -10,7 +10,10 @@
 	"container.Product.title": "List Product",
 	"container.Product.name.product.item": "MacOS",
 	"container.Product.price.product.item": "700$",
+<<<<<<< HEAD
 	"container.Product.button_add_cart.product.item": "Add To Cart",
+=======
+>>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf
 	"container.Cart.bar.information.product.img": "Image",
 	"container.Cart.bar.information.product.name": "Product's Name",
 	"container.Cart.bar.information.product.price": "Price",
