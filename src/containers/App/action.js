@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-import { OPEN_MENU } from './constants';
-import { CLOSE_MENU } from './constants';
+import { OPEN_MENU, CLOSE_MENU } from './constants';
 
 export function openMenu() {
   return {
@@ -14,4 +11,3 @@ export function closeMenu() {
     type: CLOSE_MENU,
   };
 }
->>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf

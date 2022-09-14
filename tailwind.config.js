@@ -9,14 +9,12 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
-      'white': '#fff',
-      'blue': '#1fb6ff',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
+      white: '#fff',
+      blue: '#1fb6ff',
+      pink: '#ff49db',
+      orange: '#ff7849',
+      green: '#13ce66',
+      gray: '#8492a6',
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -24,11 +22,11 @@ module.exports = {
     },
     extend: {
       top: {
-        '100+10': 'calc(100% + 10px)'
+        '100+10': 'calc(100% + 10px)',
       },
       spacing: {
-        '128': '32rem',
-        '144': '36rem',
+        128: '32rem',
+        144: '36rem',
       },
       borderRadius: {
         '4xl': '2rem',
@@ -36,8 +34,8 @@ module.exports = {
       transitionTimingFunction: {
         'in-expo': 'cubic-bezier(0.95, 0.05, 0.795, 0.035)',
         'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
-      }
-    }
+      },
+    },
   },
   plugins: [],
 };

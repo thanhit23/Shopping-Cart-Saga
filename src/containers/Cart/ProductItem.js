@@ -1,34 +1,42 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
 
 class ProductInformationBar extends Component {
+  onDeleteProduct = id => this.props.deleteProduct(id);
+
   render() {
+    const {
+      product: { product, quantity },
+    } = this.props;
+    const { id, image, name, price } = product;
+
     return (
       <tr>
         <td className="product-item w-[10%]">
-          <img
-            className="w-[80px] h-[80px] m-auto"
-            src="https://i.picsum.photos/id/1/250/300.jpg?hmac=SjXl8hpUiMGjDggTWBEPKbL-Y3PVQCPySP63BjyQPpU"
-            alt="macOS"
-          />
+          <img className="w-[80px] h-[80px] m-auto" src={image} alt={name} />
         </td>
         <td className="product-item w-[50%]">
-          <p>
-            SIÊU PHẨM] Áo Khoác Bomber Nam Nữ Unisex Mùa Hè Chữ U Phối Màu Viền
-            Cổ Zenkonu AO KHOAC NAM 1000040
+          <p>{name}</p>
+        </td>
+        <td className="product-item w-[10%]">
+          <p className="text-center">đ{price.toLocaleString()}</p>
+        </td>
+        <td className="product-item w-[10%]">
+          <p className="text-center">{quantity}</p>
+        </td>
+        <td className="product-item w-[10%]">
+          <p className="text-center">
+            đ{(+quantity * +price).toLocaleString()}
           </p>
         </td>
-        <td className="product-item w-[10%]">
-          <p className="text-center">89.000</p>
-        </td>
-        <td className="product-item w-[10%]">
-          <p className="text-center">10</p>
-        </td>
-        <td className="product-item w-[10%]">
-          <p className="text-center">10</p>
-        </td>
         <td className="product-item w-[10%] text-center">
-          <button className="btn btn-delete" type="button">
-            Xoá
+          <button
+            className="btn btn-delete"
+            type="button"
+            onClick={() => this.onDeleteProduct(id)}
+          >
+            <FormattedMessage {...messages.button_delete} />
           </button>
         </td>
       </tr>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { FormattedMessage } from 'react-intl';
@@ -10,11 +9,15 @@ import reducer from './reducer';
 import ProductItems from '../../components/ProductItem';
 import messages from './messages';
 import injectReducer from '../../utils/injectReducer';
+import { addToCart } from '../Cart/actions';
 
 class Product extends Component {
-  // eslint-disable-next-line react/sort-comp
+  onAddToCart = product => this.props.addToCart(product);
+
   showProduct(products = []) {
-    return products.map((i, k) => <ProductItems key={k} product={i} />);
+    return products.map((i, k) => (
+      <ProductItems key={k} product={i} addToCart={this.onAddToCart} />
+    ));
   }
 
   render() {
@@ -53,19 +56,13 @@ const mapStateToProps = state => {
   };
 };
 
-const withConnect = connect(mapStateToProps, null);
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: product => dispatch(addToCart(product)),
+  };
+};
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'products', reducer });
 
 export default compose(withReducer, withConnect)(Product);
-=======
-
-import ProductComponent from '../../components/Product';
-
-class Product extends Component {
-  render() {
-    return <ProductComponent />;
-  }
-}
-
-export default Product;
->>>>>>> 59ffdad330e8d52328de20020de207d05e516ddf

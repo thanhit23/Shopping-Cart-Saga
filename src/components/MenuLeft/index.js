@@ -9,7 +9,6 @@ import Modal from './Modal';
 import Item from '../ListItem';
 import messages from './messages';
 import DropDownNavBar from './DropdownNavBar';
-import '../../css/menu.css';
 library.add(fab);
 
 class MenuLeft extends Component {

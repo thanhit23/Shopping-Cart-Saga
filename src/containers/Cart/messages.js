@@ -3,6 +3,10 @@ import { defineMessages } from 'react-intl';
 export const scope = 'container.Cart';
 
 export default defineMessages({
+  empty_cart: {
+    id: `${scope}.empty`,
+    defaultMessage: 'No Products Yet',
+  },
   bar_img: {
     id: `${scope}.product.information.bar.img`,
     defaultMessage: 'Image',
@@ -26,5 +30,13 @@ export default defineMessages({
   bar_feature: {
     id: `${scope}.product.information.bar.img`,
     defaultMessage: 'Feature',
+  },
+  payment_total: {
+    id: `${scope}.product.payment.total`,
+    defaultMessage: 'Total',
+  },
+  button_delete: {
+    id: `${scope}.product.button.delete`,
+    defaultMessage: 'Delete',
   },
 });
