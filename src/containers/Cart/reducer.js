@@ -7,15 +7,16 @@
  *
  */
 
+import React from 'react';
 import produce from 'immer';
 import { findIndex } from 'lodash';
 import { toast } from 'react-toastify';
 import { FormattedMessage } from 'react-intl';
 
-import { ADD_TO_CART, DELETE_PRODUCT } from './constants';
+import { DELETE_PRODUCT } from './constants';
 import messages from '../App/messages';
 import { get } from '../../storeManager';
-
+import { ADD_TO_CART } from '../Product/constants';
 const initialState = get('cart') || [];
 
 const cartReducer = (state = initialState, action) =>

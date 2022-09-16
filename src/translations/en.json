@@ -8,8 +8,7 @@
 	"container.Header.dropdown.product.item.all": "All Product",
 	"container.Header.dropdown.product.item.detail": "Product Detail",
 	"container.Product.title": "Top Save Today",
-	"container.Product.name.product.item": "MacOS",
-	"container.Product.price.product.item": "700$",
+	"container.Cart.title": "Cart",
 	"container.Product.button_add_cart.product.item": "Add To Cart",
 	"container.Cart.empty": "No Products Yet",
 	"container.Cart.bar.information.product.img": "Image",
@@ -21,5 +20,6 @@
 	"container.Messages.delete.success": "Delete Successfully",
 	"container.Messages.update.success": "Update Successfully",
 	"container.Messages.add.cart.success": "Add To Cart Successfully",
+	"container.NotFoundPage.header": "404 - Page not found.",
 	"app.learn-react-link": "Learn React."
 }

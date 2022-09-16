@@ -10,12 +10,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../Header';
 import Product from '../Product';
+import NotFound from '../NotFoundPage';
 import Cart from '../Cart';
+import Login from '../LoginPage';
 
 const AppWrapper = styled.div`
   position: relative;
@@ -40,8 +43,13 @@ class App extends Component {
         </Helmet>
         <ToastContainer />
         <Header />
-        <Product />
-        <Cart />
+        <Routes>
+          <Route index element={<Product />} />
+          <Route exact path="/product" element={<Product />} />
+          <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </AppWrapper>
     );
   }

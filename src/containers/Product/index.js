@@ -9,7 +9,7 @@ import reducer from './reducer';
 import ProductItems from '../../components/ProductItem';
 import messages from './messages';
 import injectReducer from '../../utils/injectReducer';
-import { addToCart } from '../Cart/actions';
+import { addToCart } from './actions';
 
 class Product extends Component {
   onAddToCart = product => this.props.addToCart(product);

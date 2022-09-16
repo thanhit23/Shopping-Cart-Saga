@@ -8,8 +8,7 @@
 	"container.Header.dropdown.product.item.all": "Tất Cả Sản Phẩm",
 	"container.Header.dropdown.product.item.detail": "Sản Phẩm Chi Tiết",
 	"container.Product.title": "Tiết kiệm hàng đầu hôm nay",
-	"container.Product.name.product.item": "MacOS",
-	"container.Product.price.product.item": "700đ",
+	"container.Cart.title": "Giỏ Hàng",
 	"container.Product.button_add_cart.product.item": "Thêm giả hàng",
 	"container.Cart.empty": "Chưa Có Sản Phẩm Nào",
 	"container.Cart.bar.information.product.img": "Hình Ảnh",
@@ -21,5 +20,6 @@
 	"container.Messages.delete.success": "Xoá Thành Công",
 	"container.Messages.update.success": "Cập nhật Thành Công",
 	"container.Messages.add.cart.success": "Đã Thêm Vào Giỏ Hàng",
+	"container.NotFoundPage.header": "404 - Trang không tìm thấy",
 	"app.learn-react-link": "Học React."
 }
