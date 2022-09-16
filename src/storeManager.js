@@ -1,5 +1,5 @@
 import invariant from 'invariant';
-import { isString, isArray } from 'lodash';
+import { isString } from 'lodash';
 
 const get = key => {
   invariant(
@@ -11,7 +11,7 @@ const get = key => {
 
 const set = (key, data) => {
   invariant(
-    isString(key) && isArray(data),
+    isString(key),
     '(app/storeManager) set store: Expected a valid store',
   );
 

@@ -44,8 +44,11 @@
     .product-page {
         @apply flex flex-col justify-center;
     }
+    .product-page_link {
+        @apply text-white;
+    }
     .product-page_title {
-        @apply py-4 text-center cursor-pointer text-white;
+        @apply py-4 text-center cursor-pointer;
     }
     .product-page_list {
         @apply bg-white text-[#000] ease-in duration-300;

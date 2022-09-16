@@ -1,4 +1,5 @@
-import { ADD_TO_CART, DELETE_PRODUCT } from '../containers/Cart/constants';
+import { DELETE_PRODUCT } from '../containers/Cart/constants';
+import { ADD_TO_CART } from '../containers/Product/constants';
 import { set } from '../storeManager';
 
 const middlewareLocalStorage = store => next => action => {

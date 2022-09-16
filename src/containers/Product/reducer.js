@@ -11,7 +11,8 @@ import produce from 'immer';
 
 // The initial state of the Product
 import { get } from '../../storeManager';
-export const initialState = get('product') || [];
+const data = get('product');
+const initialState = data || [];
 
 const productReducer = (state = initialState, action) =>
   // eslint-disable-next-line consistent-return

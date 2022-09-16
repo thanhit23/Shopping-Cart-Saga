@@ -5,24 +5,13 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 
 function HomePage() {
-  return (
-    <Header />
-  )
+  return <Header />;
 }
 
 const mapStateToProps = createStructuredSelector({
   navbar: false,
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-
-  };
-}
-
-const HomeComponent = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(HomePage);
+const HomeComponent = connect(mapStateToProps, null)(HomePage);
 
 export default HomeComponent;
