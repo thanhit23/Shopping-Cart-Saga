@@ -7,6 +7,7 @@
 	"container.Header.dropdown.product.title": "Product Page",
 	"container.Header.dropdown.product.item.all": "All Product",
 	"container.Header.dropdown.product.item.detail": "Product Detail",
+	"container.Header.dropdown.login.title": "Login",
 	"container.Product.title": "Top Save Today",
 	"container.Cart.title": "Cart",
 	"container.Product.button_add_cart.product.item": "Add To Cart",

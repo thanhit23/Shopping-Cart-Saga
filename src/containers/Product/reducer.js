@@ -1,5 +1,5 @@
 /*
- * HomeReducer
+ * cartReducer
  *
  * The reducer takes care of our data. Using actions, we can
  * update our application state. To add a new action,
@@ -9,18 +9,22 @@
 
 import produce from 'immer';
 
-// The initial state of the Product
-import { get } from '../../storeManager';
-const data = get('product');
-const initialState = data || [];
+const initialState = [
+    {
+        id: 1,
+        name: 'Iphone 12',
+        price: 1200,
+        status: true,
+    },
+];
 
-const productReducer = (state = initialState, action) =>
-  // eslint-disable-next-line consistent-return
-  produce(state, () => {
-    switch (action.type) {
-      default:
-        return [...state];
-    }
-  });
+const cartReducer = (state = initialState, action) =>
+    // eslint-disable-next-line consistent-return
+    produce(state, () => {
+        switch (action.type) {
+            default:
+                return [...state];
+        }
+    });
 
-export default productReducer;
+export default cartReducer;

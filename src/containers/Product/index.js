@@ -1,68 +1,93 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
 import { compose } from 'redux';
-import { FormattedMessage } from 'react-intl';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { findIndex } from 'lodash';
+import { Link } from 'react-router-dom';
 
-import { ProductWrapper } from './ProductWrapper';
-import reducer from './reducer';
-import ProductItems from '../../components/ProductItem';
-import messages from './messages';
+import CallAPI from '../../utils/CallAPI';
 import injectReducer from '../../utils/injectReducer';
-import { addToCart } from './actions';
+import reducer from './reducer';
+import ProductItem from '../ProductItem';
+import ProductList from '../ProductList';
 
 class Product extends Component {
-  onAddToCart = product => this.props.addToCart(product);
+    constructor(props) {
+        super(props);
+        this.state = {
+            products: [],
+        }
+    }
+    showProducts(products) {
+        let result = null;
+        if (products) {
+            result = products.map((product, index) => {
+                return (
+                    <ProductItem
+                        key={index}
+                        product={product}
+                        index={index}
+                        onDelete={this.onDelete}
+                    />
+                )
+            })
+        }
+        return result;
+    }
 
-  showProduct(products = []) {
-    return products.map((i, k) => (
-      <ProductItems key={k} product={i} addToCart={this.onAddToCart} />
-    ));
-  }
+    componentDidMount() {
+        CallAPI('products', 'GET', null).then(({ data }) => {
+            this.setState({
+                products: data,
+            })
+        })
+    }
 
-  render() {
-    const { products } = this.props;
-    return (
-      <ProductWrapper>
-        <div className="flex py-4 px-12 justify-between">
-          <p>
-            <FormattedMessage {...messages.title} />
-          </p>
-        </div>
-        <ul className="flex flex-wrap">{this.showProduct(products)}</ul>
-      </ProductWrapper>
-    );
-  }
+    onDelete = id => {
+        const { products } = this.state;
+        const index = findIndex(products, ({ id: idProduct }) => id === idProduct )
+        CallAPI(`products/${id}`, 'DELETE', null).then(({ status }) => {
+            console.log(status);
+            if (status === 200) {
+                products.splice(index, 1);
+                this.setState({
+                    products,
+                })
+            }
+        })
+    }
+
+    render() {
+        const { products } = this.state;
+        console.log(products);
+
+        return (
+            <div className="flex flex-col w-[1000px] m-auto">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
+                        <div className="overflow-hidden">
+                            <Link to="/product/add">
+                                <button type="button" className="btn-product">
+                                    Add Product
+                                </button>
+                            </Link>
+                            <ProductList>
+                                {this.showProducts(products)}
+                            </ProductList>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
-
-Product.propTypes = {
-  product: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      inventory: PropTypes.number.isRequired,
-      rating: PropTypes.number.isRequired,
-    }),
-  ),
-};
-
 const mapStateToProps = state => {
-  const { products } = state;
-  return {
-    products,
-  };
+    const { product } = state;
+    return {
+        product,
+    };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addToCart: product => dispatch(addToCart(product)),
-  };
-};
-
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-const withReducer = injectReducer({ key: 'products', reducer });
+const withConnect = connect(mapStateToProps, null);
+const withReducer = injectReducer({ key: 'product', reducer });
 
 export default compose(withReducer, withConnect)(Product);
