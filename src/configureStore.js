@@ -2,13 +2,14 @@
  * Create the store with dynamic reducers
  */
 
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import createReducer from './reducers';
 import middlewareLocalStorage from './middleware/middleware-storage';
 
 const enhancer = compose(
-  applyMiddleware(middlewareLocalStorage),
+  applyMiddleware(thunk, middlewareLocalStorage),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 

@@ -55,6 +55,7 @@ module.exports = {
     'react/require-default-props': 0,
     'react/destructuring-assignment': 0,
     'jsx-a11y/control-has-associated-label': 0,
+    'import/no-named-as-default-member': 0,
     'jsx-a11y/no-static-element-interactions': [
       'error',
       {

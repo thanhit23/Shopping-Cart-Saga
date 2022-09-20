@@ -1,16 +1,34 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import ProductBoard from '../ProductBoard';
 
 class HomePage extends Component {
-    render() {
-        return (
-            <div className="text-center bg-gray-50 text-gray-800 py-20 px-6">
-                <h1 className="text-5xl font-bold mt-0 mb-6">Heading</h1>
-                <h3 className="text-3xl font-bold mb-8">Subeading</h3>
-                <a className="btn-submit inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                   data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Get started</a>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <section>
+        <Helmet>
+          <title>Home Page</title>
+          <meta
+            name="description"
+            content="A React.js Boilerplate application homepage"
+          />
+        </Helmet>
+        <div className="m-[10px]">
+          <button
+            type="button"
+            className="inline-block px-6 py-2.5 bg-[rgb(37,99,235)] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[rgb(29,78,216)] hover:shadow-lg focus:bg-[rgb(29,78,216)] focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          >
+            <FontAwesomeIcon icon={faPlus} />
+            Add Product
+          </button>
+        </div>
+        <ProductBoard />
+      </section>
+    );
+  }
 }
 
 export default HomePage;
