@@ -5,7 +5,8 @@ import { ToastContainer } from 'react-toastify';
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import RegisterPage from '../RegisterPage';
-import Header from '../../components/Header';
+import Header from '../Header';
+import LoadingIndicator from '../LoadingIndicator';
 import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
       <>
         <ToastContainer />
         <Header />
+        <LoadingIndicator />
         <Routes>
           <Route index exact path="/" element={<HomePage />} />
           <Route exact path="/home" element={<HomePage />} />

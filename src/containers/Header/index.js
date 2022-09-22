@@ -2,12 +2,27 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
+import { bindActionCreators, compose } from 'redux';
+import propTypes from 'prop-types';
+
+import Search from './Search';
+import { filterProduct } from './actions';
+import injectReducer from '../../utils/injectReducer';
+import injectSaga from '../../utils/injectSaga';
+import reducer from './reducers';
+import saga from './saga';
 
 class Header extends Component {
+  onchange = ({ target: { value } }) => {
+    const { onChangeSearch } = this.props;
+    onChangeSearch(value);
+  };
+
   render() {
     return (
       <header>
-        <nav className="bg-[#6366f1] navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
+        <nav className="bg-[#6366f1] navbar navbar-expand-lg shadow-md py-2 relative flex items-center w-full justify-between">
           <div className="px-6 w-full flex flex-wrap items-center justify-between">
             <div className="flex items-center">
               <button
@@ -70,48 +85,7 @@ class Header extends Component {
                   </NavLink>
                 </li>
                 <li>
-                  <form>
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label
-                      htmlFor="default-search"
-                      className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
-                    >
-                      Search
-                    </label>
-                    <div className="relative">
-                      <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg
-                          aria-hidden="true"
-                          className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                          />
-                        </svg>
-                      </div>
-                      {/* eslint-disable-next-line react/void-dom-elements-no-children */}
-                      <input
-                        type="search"
-                        id="default-search"
-                        className="block p-3 pl-10 w-[400px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Mockups, Logos..."
-                        required
-                      />
-                      <button
-                        type="submit"
-                        className="text-white absolute right-2.5 bottom-2.5 bg-[#6366f1] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      >
-                        Search
-                      </button>
-                    </div>
-                  </form>
+                  <Search handleChane={this.onchange} />
                 </li>
               </ul>
             </div>
@@ -122,4 +96,18 @@ class Header extends Component {
   }
 }
 
-export default Header;
+Header.propTypes = {
+  onChangeSearch: propTypes.func,
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onChangeSearch: bindActionCreators(filterProduct, dispatch),
+  };
+};
+
+const withConnect = connect(null, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'header', reducer });
+const withSaga = injectSaga({ key: 'header', saga });
+
+export default compose(withReducer, withSaga, withConnect)(Header);

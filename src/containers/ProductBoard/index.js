@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import { bindActionCreators, compose } from 'redux';
 
 import injectReducer from '../../utils/injectReducer';
+import injectSaga from '../../utils/injectSaga';
 import Ready from './Ready';
 import InProgress from './InProgress';
 import Completed from './Completed';
 import reducer from './reducers';
+import saga from './saga';
 import * as productActions from './actions';
 
 class ProductBoard extends Component {
   componentDidMount() {
     const { productAction } = this.props;
-    const { fetchListProductReq } = productAction;
-    fetchListProductReq();
+    const { fetchListProduct } = productAction;
+    fetchListProduct();
   }
 
   render() {
@@ -33,9 +35,10 @@ class ProductBoard extends Component {
     );
   }
 }
+
 ProductBoard.propTypes = {
-  productAction: PropTypes.shape({
-    fetchListProduct: PropTypes.func,
+  productAction: propTypes.shape({
+    fetchListProduct: propTypes.func,
   }),
 };
 
@@ -56,5 +59,6 @@ const mapDispatchToProps = dispatch => {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'products', reducer });
+const withSaga = injectSaga({ key: 'products', saga });
 
-export default compose(withReducer, withConnect)(ProductBoard);
+export default compose(withReducer, withSaga, withConnect)(ProductBoard);

@@ -1,3 +1,5 @@
+import produce from 'immer';
+
 import {
   FETCH_PRODUCT_SUCCESS,
   FETCH_PRODUCT,
@@ -8,29 +10,23 @@ const initialState = {
   listProduct: [],
 };
 
-const productReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case FETCH_PRODUCT:
-      return {
-        ...state,
-        listProduct: [],
-      };
-    case FETCH_PRODUCT_SUCCESS:
-      const {
-        payload: { data },
-      } = action;
-      return {
-        ...state,
-        listProduct: data,
-      };
-    case FETCH_PRODUCT_ERROR:
-      return {
-        ...state,
-        listProduct: [],
-      };
-    default:
-      return [];
-  }
-};
+const productReducer = (state = initialState, action) =>
+  produce(state, draft => {
+    // eslint-disable-next-line default-case
+    switch (action.type) {
+      case FETCH_PRODUCT:
+        draft.listProduct = [];
+        break;
+      case FETCH_PRODUCT_SUCCESS:
+        const {
+          payload: { data },
+        } = action;
+        draft.listProduct = data;
+        break;
+      case FETCH_PRODUCT_ERROR:
+        draft.listProduct = [];
+        break;
+    }
+  });
 
 export default productReducer;
