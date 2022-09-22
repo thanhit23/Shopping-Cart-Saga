@@ -24,6 +24,7 @@ module.exports = {
     'arrow-parens': [2, 'as-needed'],
     'arrow-body-style': 0,
     'no-plusplus': 0,
+    'no-confusing-arrow': 0,
     'no-return-assign': 0,
     'array-callback-return': 0,
     'implicit-arrow-linebreak': 0,

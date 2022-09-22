@@ -14,6 +14,8 @@ class Service {
   handleError = err => Promise.reject(err);
 
   get = url => this.instance.get(url);
+
+  post = (url, body) => this.instance.post(url, body);
 }
 
 export default new Service();
