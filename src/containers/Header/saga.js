@@ -1,17 +1,12 @@
-import { takeLatest, select, put } from 'redux-saga/effects';
+import { call, takeLatest, put } from 'redux-saga/effects';
 
 import { FILTER_PRODUCT } from './constants';
 import { filterProductSuccess } from './actions';
+import { searchProduct } from '../../apis';
 
 function* filterProductSaga({ payload: { keyword } }) {
-  const list = yield select(({ products: { listProduct } }) => listProduct);
-  const search = [];
-  list.map(({ name }) => {
-    if (name.toLowerCase().search(keyword.toLowerCase()) !== -1) {
-      search.push(name);
-    }
-  });
-  yield put(filterProductSuccess(search));
+  const res = yield call(searchProduct, keyword);
+  yield put(filterProductSuccess(res));
 }
 
 function* headerSaga() {

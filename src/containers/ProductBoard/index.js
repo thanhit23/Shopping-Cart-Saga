@@ -5,9 +5,7 @@ import { bindActionCreators, compose } from 'redux';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
-import Ready from './Ready';
-import InProgress from './InProgress';
-import Completed from './Completed';
+import ProductItem from './ProductItem';
 import reducer from './reducers';
 import saga from './saga';
 import * as productActions from './actions';
@@ -20,17 +18,17 @@ class ProductBoard extends Component {
   }
 
   render() {
+    const { listProduct } = this.props;
+    const productElement = listProduct.map((i, k) => {
+      return <ProductItem key={k} data={i} />;
+    });
+
     return (
-      <div className="grid grid-cols-3 gap-4 w-[1200px] m-auto">
-        <div className="ready p-2">
-          <Ready />
+      <div className="w-[1200px] m-auto">
+        <div className="text-center">
+          <h2>All Products</h2>
         </div>
-        <div className="in-progress">
-          <InProgress />
-        </div>
-        <div className="completed">
-          <Completed />
-        </div>
+        <div className="grid grid-cols-3 gap-4">{productElement}</div>
       </div>
     );
   }

@@ -9,6 +9,7 @@ import { Field, reduxForm } from 'redux-form';
 import { FORM_NAME } from './constants';
 import { renderField, validate, warn } from '../../utils/validation';
 import { addProduct } from './actions';
+import { updateProduct } from '../ProductBoard/actions';
 
 class ModalAddProduct extends Component {
   closeModal = ({
@@ -21,13 +22,22 @@ class ModalAddProduct extends Component {
     }
   };
 
-  handleSubmitForm = data => {
-    this.props.onAddProduct(data);
+  addProductForm = data => {
+    const { price, name } = data;
+    this.props.onAddProduct({
+      price: Number(price),
+      name,
+    });
+  };
+
+  updateProductForm = data => {
+    console.log(data, 'data');
+    this.props.onUpdateProduct(data);
   };
 
   render() {
-    const { title, handleSubmit, invalid } = this.props;
-
+    const { title, handleSubmit, invalid, productEditing: edit } = this.props;
+    const addEditProduct = edit ? this.updateProductForm : this.addProductForm;
     return (
       // eslint-disable-next-line max-len
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
@@ -55,17 +65,17 @@ class ModalAddProduct extends Component {
                 <FontAwesomeIcon data-modal="close-modal" icon={faXmark} />
               </button>
             </div>
-            <form onSubmit={handleSubmit(this.handleSubmitForm)}>
+            <form onSubmit={handleSubmit(addEditProduct)}>
               <div className="modal-body relative p-4">
                 <Field
                   component={renderField}
-                  name="username"
+                  name="name"
                   type="text"
                   label="Name Product"
                 />
                 <Field
                   component={renderField}
-                  name="priceProduct"
+                  name="price"
                   type="text"
                   label="Price Product"
                 />
@@ -103,9 +113,11 @@ ModalAddProduct.propTypes = {
 
 const mapStateToProps = state => {
   const {
-    home: { isModal, title },
+    home: { isModal, title, productEditing },
   } = state;
   return {
+    productEditing,
+    initialValues: productEditing,
     title,
     isModal,
   };
@@ -114,10 +126,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddProduct: bindActionCreators(addProduct, dispatch),
+    onUpdateProduct: bindActionCreators(updateProduct, dispatch),
   };
 };
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReduxForm = reduxForm({ form: FORM_NAME, validate, warn });
 
-export default compose(withReduxForm, withConnect)(ModalAddProduct);
+export default compose(withConnect, withReduxForm)(ModalAddProduct);

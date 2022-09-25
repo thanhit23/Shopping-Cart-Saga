@@ -1,14 +1,18 @@
-import { fork, take, call, put, delay } from 'redux-saga/effects';
+import { fork, take, call, put, delay, takeEvery } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 
-import { getList } from '../../apis';
-import { FETCH_PRODUCT, STATUS_SUCCESS } from './constants';
-import { fetchListProductSuccess, fetchListProductError } from './actions';
-import { showLoading, hideLoading } from '../LoadingIndicator/actions';
+import { getList, deleteProduct } from '../../apis';
+import { FETCH_PRODUCT_REQ, PRODUCT_DELETE, STATUS_SUCCESS } from './constants';
+import {
+  fetchListProductSuccess,
+  fetchListProductError,
+  deleteProductSuccess,
+  deleteProductFailed,
+} from './actions';
 
 function* watchFetchListProductAction() {
   while (true) {
-    yield take(FETCH_PRODUCT);
-    yield put(showLoading());
+    yield take(FETCH_PRODUCT_REQ);
     const res = yield call(getList);
     const { data, status } = res;
     if (status === STATUS_SUCCESS) {
@@ -16,13 +20,24 @@ function* watchFetchListProductAction() {
     } else {
       yield put(fetchListProductError(data));
     }
-    yield delay(500);
-    yield put(hideLoading());
   }
+}
+
+function* deleteProductAction({ payload: { id } }) {
+  const res = yield call(deleteProduct, id);
+  const { data, status, message } = res;
+  if (status === STATUS_SUCCESS) {
+    yield put(deleteProductSuccess(data));
+  } else {
+    yield put(deleteProductFailed(data));
+    toast.error(message);
+  }
+  yield delay(500);
 }
 
 function* productSaga() {
   yield fork(watchFetchListProductAction);
+  yield takeEvery(PRODUCT_DELETE, deleteProductAction);
 }
 
 export default productSaga;

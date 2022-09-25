@@ -16,6 +16,10 @@ class Service {
   get = url => this.instance.get(url);
 
   post = (url, body) => this.instance.post(url, body);
+
+  put = (url, body) => this.instance.put(url, body);
+
+  delete = (url, id) => this.instance.delete(url, id);
 }
 
 export default new Service();

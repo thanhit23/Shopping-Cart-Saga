@@ -3,14 +3,16 @@ import produce from 'immer';
 import {
   CLOSE_MODAL,
   OPEN_MODAL,
-  ADD_PRODUCT,
   ADD_PRODUCT_SUCCESS,
   ADD_PRODUCT_FAILED,
+  PRODUCT_EDIT,
 } from './constants';
+
 const initialState = {
   isModal: false,
-  title: null,
+  title: '',
   listProduct: [],
+  productEditing: null,
 };
 
 const headerReducer = (state = initialState, action) =>
@@ -26,19 +28,15 @@ const headerReducer = (state = initialState, action) =>
         const { title } = action;
         draft.title = title;
         draft.isModal = true;
+        draft.productEditing = null;
         break;
-      case ADD_PRODUCT:
-        return {
-          ...draft,
-        };
-      case ADD_PRODUCT_SUCCESS:
+      case ADD_PRODUCT_SUCCESS: {
         const {
           payload: { data },
         } = action;
-        return {
-          ...draft,
-          listProduct: draft.listProduct.concat([data]),
-        };
+        draft.listProduct = draft.listProduct.concat([data]);
+        break;
+      }
       case ADD_PRODUCT_FAILED:
         const {
           payload: { error },
@@ -47,6 +45,12 @@ const headerReducer = (state = initialState, action) =>
           ...draft,
           error,
         };
+      case PRODUCT_EDIT: {
+        const {
+          payload: { data },
+        } = action;
+        draft.productEditing = data;
+      }
     }
   });
 

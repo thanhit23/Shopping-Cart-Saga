@@ -10,7 +10,7 @@ export const scope = 'components.Register';
 export default defineMessages({
   title: {
     id: `${scope}.title`,
-    defaultMessage: 'Create An Account',
+    defaultMessage: 'Login to continue',
   },
   btn_login: {
     id: `${scope}.button.login`,
