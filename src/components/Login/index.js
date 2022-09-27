@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+
 import messages from './messages';
 
 class Login extends Component {
@@ -32,9 +34,11 @@ class Login extends Component {
           </button>
           <p className="mt-4 text-sm">
             <FormattedMessage {...messages.message_login_account} />
-            <span className="underline  cursor-pointer">
-              <FormattedMessage {...messages.sign_up} />
-            </span>
+            <Link to="/register">
+              <span className="underline  cursor-pointer">
+                <FormattedMessage {...messages.sign_up} />
+              </span>
+            </Link>
           </p>
         </div>
       </div>

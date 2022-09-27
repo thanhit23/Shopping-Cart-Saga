@@ -4,6 +4,7 @@ import {
   ADD_PRODUCT,
   ADD_PRODUCT_FAILED,
   ADD_PRODUCT_SUCCESS,
+  PRODUCT_EDIT,
 } from './constants';
 import { toastError } from '../../helpers/toast';
 
@@ -17,12 +18,12 @@ export const closeModal = () => ({
 });
 
 export const addProduct = data => {
-  const { username, priceProduct } = data;
+  const { name, price } = data;
   return {
     type: ADD_PRODUCT,
     payload: {
-      username,
-      priceProduct,
+      name,
+      price,
     },
   };
 };
@@ -43,3 +44,10 @@ export const addProductFailed = error => {
     },
   };
 };
+
+export const editProduct = data => ({
+  type: PRODUCT_EDIT,
+  payload: {
+    data,
+  },
+});

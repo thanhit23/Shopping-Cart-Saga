@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import propTypes from 'prop-types';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import Search from './Search';
 import { filterProduct } from './actions';
@@ -13,10 +13,22 @@ import injectSaga from '../../utils/injectSaga';
 import reducer from './reducers';
 import saga from './saga';
 
+function withParams(Components) {
+  // eslint-disable-next-line func-names
+  return function (props) {
+    return <Components {...props} navigate={useNavigate()} />;
+  };
+}
+
 class Header extends Component {
   onchange = ({ target: { value } }) => {
     const { onChangeSearch } = this.props;
     onChangeSearch(value);
+  };
+
+  handleLogout = () => {
+    const { navigate } = this.props;
+    navigate('/login');
   };
 
   render() {
@@ -65,24 +77,22 @@ class Header extends Component {
                     className="nav-link block pr-2 lg:px-2 py-2 text-[rgb(255,255,255)] hover:text-[rgb(226,232,240)] focus:text-[rgb(148,163,184)] transition duration-150 ease-in-out"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
+                    data-drawer-show="drawer-navigation"
+                    aria-controls="drawer-navigation"
                   >
                     <FontAwesomeIcon className="mr-1" icon={faBars} />
                     Home
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink
-                    exact="true"
-                    style={({ isActive }) => ({
-                      color: isActive && 'rgb(226,232,240)',
-                    })}
-                    to="/product"
+                  {/* eslint-disable-next-line max-len */}
+                  {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+                  <div
+                    onClick={this.handleLogout}
                     className="nav-link block pr-2 lg:px-2 py-2 text-[rgb(255,255,255)] hover:text-[rgb(226,232,240)] focus:text-[rgb(148,163,184)] transition duration-150 ease-in-out"
-                    data-mdb-ripple="true"
-                    data-mdb-ripple-color="light"
                   >
-                    Product
-                  </NavLink>
+                    LogOut
+                  </div>
                 </li>
                 <li>
                   <Search handleChane={this.onchange} />
@@ -110,4 +120,4 @@ const withConnect = connect(null, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'header', reducer });
 const withSaga = injectSaga({ key: 'header', saga });
 
-export default compose(withReducer, withSaga, withConnect)(Header);
+export default withParams(compose(withReducer, withSaga, withConnect)(Header));
